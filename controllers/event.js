@@ -6,11 +6,10 @@ const eventCtrl = {
 	getLogs,
 };
 
-async function getLogs(req, res) {
+async function getLogs(req, res, next) {
+    if(req.body === null || undefined) next();
+    
     try {
-            // const ipAddress = req.getRemoteAddr();
-            // const hostName = req.getRemoteHost();
-        
             const {app} = req.body
             console.log(req.url)
             console.log(os.hostname())
@@ -19,9 +18,11 @@ async function getLogs(req, res) {
 
             new Logger(`${app}`);
             logger.info(`Forester log captured url: ${fullUrl} | callingApp: ${app} `);   
-
+            res.json({ status: "Success"})
         } catch (err) {
             logger.error(err);
+            
+            return res.status(500).json({ msg: err.message })
         }
 }
 
