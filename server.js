@@ -14,9 +14,12 @@ app.use(bodyParser.urlencoded({
 
 const logger = new Logger('app');
 
-app.post('/', (req, res) => {
+app.post('/event', (req, res) => {
     try {
-        
+        const ipAddress = req.getRemoteAddr();
+        const hostName = req.getRemoteHost();
+
+        console.log(ipAddress, hostName)
         new Logger(`${req.body}`);
         logger.info(`Forester log captured ${req.body}`);
 
