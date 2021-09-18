@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-const logger = new Logger('app');
+const logger = new Logger('forester');
 const eventRouter = require('./routes/event');
 
 app.use('/event', eventRouter);
