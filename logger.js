@@ -27,6 +27,12 @@ class LoggerService {
           tryReconnect: true
         })
       ],
+      exceptionHandlers: [
+        new transports.File({ filename:  `./logs/${route}-exceptions.log` })
+      ],
+      rejectionHandlers: [
+        new transports.File({ filename: `./logs/${route}-rejections.log` })
+      ],
 
       format: winston.format.printf((info) => {
         let message = `${dateFormat()} | ${info.level.toUpperCase()} | ${route}.log | ${info.message} | `
@@ -34,43 +40,47 @@ class LoggerService {
         message = this.log_data ? message + `log_data:${JSON.stringify(this.log_data)} | ` : message
         return message
       })
-   });
+    });
 
-   this.logger = logger;
+    logger.profile(route, { level: 'debug' })
 
-}
-    setLogData(log_data) {
+
+    this.logger = logger;
+
+  }
+
+  setLogData(log_data) {
     this.log_data = log_data;
-    }
+  }
 
-    async info(message) {
-      this.logger.log('info', message);
-    }
-    async info(message, obj) {
-      this.logger.log('info', message, {
-        obj
-      });
-    }
+  async info(message) {
+    this.logger.log('info', message);
+  }
+  async info(message, obj) {
+    this.logger.log('info', message, {
+      obj
+    });
+  }
 
-    async debug(message) {
-      this.logger.log('debug', message);
-    }
+  async debug(message) {
+    this.logger.log('debug', message);
+  }
 
-    async debug(message, obj) {
-      this.logger.log('debug', message, {
-        obj
-      });
-    }
+  async debug(message, obj) {
+    this.logger.log('debug', message, {
+      obj
+    });
+  }
 
-    async error(message) {
-      this.logger.log('error', message);
-    }
+  async error(message) {
+    this.logger.log('error', message);
+  }
 
-    async error(message, obj) {
-      this.logger.log('error', message, {
-        obj
-      });
-    }
+  async error(message, obj) {
+    this.logger.log('error', message, {
+      obj
+    });
+  }
 
 }
 
