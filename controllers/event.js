@@ -10,13 +10,17 @@ async function getLogs(req, res, next) {
     if(req.body === null || undefined) next();
     
     try {
+            console.log(req.body)
             const {app} = req.body
             console.log(req.url)
             console.log(os.hostname())
             console.log(req.originalUrl)
             const fullUrl = `${req.protocol}://${req.get('host')}${req.url}`;
 
-            new Logger(`${app}`);
+            let log = new Logger(`${app}`);
+            if(log) {
+                log.info(`Forester log captured url: ${fullUrl} | callingApp: ${app} `);
+            }
             logger.info(`Forester log captured url: ${fullUrl} | callingApp: ${app} `);   
             res.json({ status: "Success"})
         } catch (err) {
