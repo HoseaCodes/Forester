@@ -21,7 +21,7 @@ class LoggerService {
           filename: `./logs/${route}.log`
         }),
         new winston.transports.MongoDB({
-          db: process.env.MONGODB_URL || "mongodb://localhost:27017/foreseter",
+          db: process.env.MONGODB_URL || "mongodb://localhost:27017/forester",
           level: "info",
           collection: route,
           tryReconnect: true

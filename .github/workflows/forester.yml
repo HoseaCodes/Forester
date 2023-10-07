@@ -15,7 +15,6 @@ jobs:
     - name: Prune Logs
       uses: HoseaCodes/Log-Pruner@v1.1 # Uses an action in the root directory
       with:
-        who-to-greet: 'Mona the Octocat'
         mongodb_url: 'mongodb://localhost:27017'
         db_name: 'forester'
         collection_name : 'forester'
