@@ -28,10 +28,10 @@ class LoggerService {
         })
       ],
       exceptionHandlers: [
-        new transports.File({ filename:  `./logs/${route}-exceptions.log` })
+        new winston.transports.File({ filename:  `./logs/${route}-exceptions.log` })
       ],
       rejectionHandlers: [
-        new transports.File({ filename: `./logs/${route}-rejections.log` })
+        new winston.transports.File({ filename: `./logs/${route}-rejections.log` })
       ],
 
       format: winston.format.printf((info) => {
