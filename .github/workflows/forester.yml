@@ -1,11 +1,22 @@
-name: forester
-
-on: [push]
+name: Remove logs past 7 days old
+on:
+  schedule:
+    # At the end of every day
+    - cron: "0 0 * * *"
+  workflow_call:
 
 jobs:
-  deploy-sandbox:
+  prune:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup node
-        uses: actions/setup-node@v2
+    - uses: actions/checkout@v2
+    - name: Setup node
+      uses: actions/setup-node@v2
+    - name: Prune Logs
+      uses: HoseaCodes/Log-Pruner@v1.1 # Uses an action in the root directory
+      with:
+        who-to-greet: 'Mona the Octocat'
+        mongodb_url: 'mongodb://localhost:27017'
+        db_name: 'forester'
+        collection_name : 'forester'
+    # Use the output from the `hello` step
