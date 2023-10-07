@@ -1,4 +1,5 @@
 const winston = require('winston');
+require('winston-mongodb');
 
 //function to return the current date and time
 dateFormat = () => {
@@ -18,6 +19,12 @@ class LoggerService {
         new winston.transports.Console(),
         new winston.transports.File({
           filename: `./logs/${route}.log`
+        }),
+        new winston.transports.MongoDB({
+          db: process.env.MONGODB_URL || "mongodb://localhost:27017/foreseter",
+          level: "info",
+          collection: route,
+          tryReconnect: true
         })
       ],
 

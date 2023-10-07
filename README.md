@@ -9,3 +9,8 @@ Logging service - From error tracking to performance monitoring, developers can 
 [Sentry Express](https://docs.sentry.io/platforms/node/guides/express/)
 [Sentry React](https://docs.sentry.io/platforms/javascript/guides/react/?gclid=CjwKCAjw64eJBhAGEiwABr9o2NEWHrjyuHW3dYVvPIrp7gBhkNhRNEqjA2I5gpSXW8G8ZdjsODq2lBoCJWgQAvD_BwE&utm_campaign=2001753825&utm_content=g&utm_medium=cpc&utm_source=google&utm_term=sentry)
 [Sentry Angular](https://docs.sentry.io/platforms/javascript/guides/angular/)
+
+## Upstream Dependencies 
+
+- [Winston](https://github.com/winstonjs/winston/tree/master)
+- [Winston-Mongodb](https://github.com/winstonjs/winston-mongodb#winston-mongodb)
