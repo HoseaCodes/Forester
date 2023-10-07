@@ -14,7 +14,7 @@ jobs:
     - name: Setup node
       uses: actions/setup-node@v2
     - name: Prune Logs
-      uses: HoseaCodes/Log-Pruner@v1.14 # Uses an action in the root directory
+      uses: HoseaCodes/Log-Pruner@v1.15 # Uses an action in the root directory
       with:
         mongodb_url: 'mongodb://localhost:27017'
         db_name: 'forester'
