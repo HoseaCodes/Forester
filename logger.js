@@ -24,7 +24,10 @@ class LoggerService {
           db: process.env.MONGODB_URL || "mongodb://localhost:27017/forester",
           level: "info",
           collection: route,
-          tryReconnect: true
+          tryReconnect: true,
+          options: {
+              useUnifiedTopology: true,
+          }
         })
       ],
       exceptionHandlers: [
