@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const express = require('express');
 const bodyParser = require('body-parser')
 const toobusy = require('toobusy-js');
@@ -46,7 +47,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-let rateLimiter = rateLimit({
+const rateLimiter = rateLimit({
   windowMs: 24 * 60 * 60 * 1000, // 24 hrs in milliseconds
   max: 100, // maximum number of request inside a window
   message: 'You have exceeded the 100 requests in 24 hrs limit!', // the message when they exceed limit
